@@ -72,8 +72,8 @@ WHERE
 	AND ka.id = k.astand_id
 	AND v.id = g.vidskiptamadur_id
 	AND t.kennitala = v.kennitala
-	AND k.samningur_id in ( select id from samningur where vidskiptamadur_id = '200' /*{1,10,40,200}*/ )
-	AND k.astand_id in ( select id from krafa_astand where lysing = 'Ógreidd' )
+	AND s.vidskiptamadur_id = '200' /*{1,10,40,200}*/
+	AND k.astand_id = 1
 	AND EXISTS ( SELECT * FROM hreyfing h WHERE h.krafa_id = k.id AND h.innborgunardagur IS NOT NULL AND h.tegund_hreyfingar_id in ( SELECT id FROM tegund_hreyfingar where lysing = 'Innborgun' ) )
 ;
 SET STATISTICS TIME, IO OFF;
