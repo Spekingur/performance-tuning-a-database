@@ -32,11 +32,9 @@ WHERE
 	AND k.annar_vanskilakostnadur is null
 	AND k.fyrri_afslattur is null
 	AND k.seinni_afslattur is null
-	--AND YEAR( h.bokunardagur ) > 2007
+	AND YEAR( h.bokunardagur ) > 2007
 GROUP BY
 	k.banki, isnull( ph.postnumer, pt.postnumer ), YEAR( h.bokunardagur )
-HAVING 
-	YEAR( h.bokunardagur ) > 2007
 ORDER BY 
 	k.banki, isnull( ph.postnumer, pt.postnumer ), YEAR( h.bokunardagur )
 
