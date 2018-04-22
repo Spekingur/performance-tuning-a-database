@@ -1,8 +1,13 @@
+USE innheimta;
+-- Scenario 3
 -- The following is a single operation, and should ALL be run each time
 -- The measurements (time, pages, etc.) for this operation includes the time it takes to create the temporary table!
 
 dbcc freeproccache; -- Throw away execution plans, among other things
 dbcc dropcleanbuffers; -- Empty the (block) buffer cache
+
+-- Statistics set
+SET STATISTICS TIME, IO ON;
 
 -- Payee with a registered home in the greidandi table has precedence to the one in thjodskra.  
 SELECT  i.skilabod_a_greidslusedla
@@ -95,7 +100,7 @@ WHERE
 	AND s.id = k.samningur_id
 	AND ka.id = k.astand_id
 	-- All scenarios
-	AND k.samningur_id in ( select id from samningur where vidskiptamadur_id = '1' /*{1,10,40,200}*/ )
+	AND k.samningur_id in ( select id from samningur where vidskiptamadur_id = '200' /*{1,10,40,200}*/ )
 	-- Test each of the following scenarios separetely
 	-- Scenario 3
 	AND k.astand_id in ( select id from krafa_astand where lysing = 'Ógreidd' )
@@ -103,3 +108,4 @@ WHERE
 ;
 drop table #Temp
 ;
+SET STATISTICS TIME, IO OFF;

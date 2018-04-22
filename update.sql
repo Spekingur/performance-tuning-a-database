@@ -1,3 +1,8 @@
+USE innheimta;
+
+-- Statistics set on
+SET STATISTICS TIME, IO ON;
+
 dbcc freeproccache; -- Throw away execution plans, among other things
 dbcc dropcleanbuffers; -- Empty the (block) buffer cache
 
@@ -13,3 +18,6 @@ WHERE
 	samningur_id in ( select id from samningur where vidskiptamadur_id = 281 )
 	AND annar_kostnadur IS NULL
 	AND upphaed > 1
+
+-- Statistics set off
+SET STATISTICS TIME, IO OFF;

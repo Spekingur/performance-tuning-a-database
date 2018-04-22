@@ -1,5 +1,10 @@
+USE innheimta;
+
 dbcc freeproccache; -- Throw away execution plans, among other things
 dbcc dropcleanbuffers; -- Empty the (block) buffer cache
+
+-- Statistics set
+SET STATISTICS TIME, IO ON;
 
 -- Summa greiddra krafna einstaklinga, per útibú, eftir póstnúmeri kröfuhafa (skráning í heimilisfang hefur forgang umfram þjóðskrá) og greiðslutímabili. Fyrir svæði utan 1xx póstnúmeraseríunnar.
 SELECT
@@ -37,4 +42,5 @@ HAVING
 	YEAR( h.bokunardagur ) > 2007
 ORDER BY 
 	k.banki, isnull( ph.postnumer, pt.postnumer ), YEAR( h.bokunardagur )
-	
+
+SET STATISTICS TIME, IO OFF;

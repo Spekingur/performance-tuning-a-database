@@ -1,3 +1,8 @@
+USE innheimta;
+
+-- Statistics set on
+SET STATISTICS TIME, IO ON;
+
 dbcc freeproccache; -- Throw away execution plans, among other things
 dbcc dropcleanbuffers; -- Empty the (block) buffer cache
 
@@ -48,3 +53,6 @@ PRINT 'Iterations: ' + convert( nvarchar, @iterations );
 
 set nocount off;
 delete krafa where tilvisun = 'PRÓFUN_EYÐA'; -- You should perform this cleanup in order for all other measurements to remain unchanged.
+
+-- Statistics set off
+SET STATISTICS TIME, IO OFF;
