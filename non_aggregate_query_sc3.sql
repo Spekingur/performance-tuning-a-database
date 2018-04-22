@@ -72,7 +72,7 @@ WHERE
 	AND ka.id = k.astand_id
 	AND v.id = g.vidskiptamadur_id
 	AND t.kennitala = v.kennitala
-	AND s.vidskiptamadur_id = '200' /*{1,10,40,200}*/
+	AND s.vidskiptamadur_id = '1' /*{1,10,40,200}*/
 	AND k.astand_id = 1
 	AND EXISTS ( SELECT * FROM hreyfing h WHERE h.krafa_id = k.id AND h.innborgunardagur IS NOT NULL AND h.tegund_hreyfingar_id = 4 )
 ;
