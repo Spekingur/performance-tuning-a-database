@@ -70,8 +70,8 @@ WHERE
 	g.id = k.greidandi_id
 	AND s.id = k.samningur_id
 	AND ka.id = k.astand_id
-	AND s.vidskiptamadur_id = '200' /*{1,10,40,200}*/
-	AND k.samningur_id = ( select top 1 id from samningur where vidskiptamadur_id = '200' order by id ) /*{1,10,40,200}*/ -- Keep this in synch with with the customer filtering above!
+	AND s.vidskiptamadur_id = '1' /*{1,10,40,200}*/
+	AND k.samningur_id = ( select top 1 id from samningur where vidskiptamadur_id = '1' order by id ) /*{1,10,40,200}*/ -- Keep this in synch with with the customer filtering above!
 	AND k.gjalddagi between cast('1/1/2010' as date ) and cast('1/1/2013' as date )
 	AND k.tilvisun IS NOT NULL
 	AND v.id = g.vidskiptamadur_id
